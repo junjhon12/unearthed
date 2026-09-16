@@ -1,22 +1,31 @@
 document.addEventListener("DOMContentLoaded", () => {
   const header = document.querySelector("header");
 
-  if (header) {
-    const logo = document.createElement("div");
-    logo.className = "logo";
-    logo.innerHTML = `<a href="/">MyWebsite</a>`;
+    const headerContainer = document.createElement('div');
+    headerContainer.className = 'header-container';
+    const headerLeft = document.createElement('div');
+    headerLeft.className = 'header-left';
+    const headerLogo = document.createElement('img');
+    headerLogo.src = '/logo.png';
+    const headerTitle = document.createElement('h1');
+    headerTitle.className = 'UnEarthed';
 
-    const nav = document.createElement("nav");
-    nav.innerHTML = `
-      <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    `;
+    headerLeft.appendChild(headerLogo);
+    headerLeft.appendChild(headerTitle);
 
-    header.appendChild(logo);
-    header.appendChild(nav);
-  }
+    const headerRight = document.createElement('div');
+    headerRight.className = 'header-right';
+
+    const headerButton = document.createElement('button');
+    headerButton.textContent = 'Home'
+
+    headerButton.addEventListener('click',function handleClick(event) {
+      window.location = '/'
+    })
+
+    headerRight.appendChild(headerButton)
+    headerContainer.appendChild(headerLeft)
+    headerContainer.appendChild(headerRight)
+
+    header.appendChild(headerContainer)
 });
