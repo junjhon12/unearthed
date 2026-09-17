@@ -2,7 +2,7 @@ const renderGifts = async () => {
     const response = await fetch('/gifts');
     const data = await response.json();
     const mainContent = document.getElementById('main-content');
-    const requestedUrl = window.location.href.split('/').pop();
+
     if (data) {
         data.map(gift => {
             const card = document.createElement('div');
@@ -44,6 +44,9 @@ const renderGifts = async () => {
         mainContent.appendChild(message);
     }
 }
+
+const requestedUrl = window.location.href.split('/').pop();
+
 if (requestedUrl) {
     window.location.href = '../404.html';
 } else {
